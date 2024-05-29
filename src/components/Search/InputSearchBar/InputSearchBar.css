@@ -1,0 +1,162 @@
+/* *************************************************************** */
+
+.searchBarContainer{
+    width: 100%;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    position: relative;
+}
+.inputSearchBarContainer{
+    height: 56px;
+    border-radius: 40px;
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.inputSearchBar{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0 28px;
+    display: block;
+}
+
+.inputSearchBar .searchInput{ 
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    padding-left: 10px;
+    line-height: 36px;
+    align-items: center;
+    color: #222;
+    background-color: transparent;
+    border: none;
+    z-index: 100000;   
+}
+.inputSearchBar .searchInput:focus-visible{
+    border: none;
+}
+.searchBarPlaceHolder{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: -20px;
+    left: 0;
+    font-size: 16px;
+    line-height: 36px;
+    cursor: text;
+    color: #767676;
+    transition: all ease;
+    z-index: -1;
+
+}
+.placeHolderItems{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    display: none;
+}
+.placeHolderItem{
+    opacity: 0;
+}
+.placeHolderItem:first-child{
+    opacity: 1;
+}
+.placeHolderItem1{
+    animation-name: showPlaceHolderItem1;
+    animation-duration: 18s;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+}
+.placeHolderItem2{
+    animation-name: showPlaceHolderItem2;
+    animation-duration: 12s;
+    animation-delay: 8s;
+    animation-iteration-count: infinite;
+}
+.placeHolderItem3{
+    animation-name: showPlaceHolderItem3;
+    animation-duration: 12s;
+    animation-delay: 14s;
+    animation-iteration-count: infinite;
+}
+.searchBarIconDefault{
+    display: flex;
+    justify-self: center;
+    vertical-align: middle;
+    width: 25px;
+    height: 55px;
+    color: #222;
+    cursor: pointer;
+    margin: 0 12px 0 0;
+    flex-shrink: 0;
+}
+.searchBarIconHover{
+    display: flex;
+    justify-self: center;
+    vertical-align: middle;
+    width: 25px;
+    height: 55px;
+    color: #222;
+    cursor: pointer;
+    margin: 0 12px 0 0;
+    flex-shrink: 0;
+    display: none !important;
+}
+.searchBarIconDefault:hover {
+    display: none !important;
+    cursor: pointer;
+}
+.searchBarIconHover .searchBarIcon:hover{
+    display: flex !important;
+    cursor: pointer;
+} 
+.searchBarbuttonContainer{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+.searchBarbutton{
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    cursor: pointer;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+    align-items: center;
+    -moz-box-align: center;
+    -webkit-box-align: center ;
+    background-color: #f60;
+    color: #fff;
+    border: 1px solid transparent;
+    font-size: 18px;
+    height: 48px;
+    width: 125px;
+    line-height: 48px;
+    border-radius: 26px;
+    margin-right: 4px;
+}
+.searchBarbutton img{
+    margin-right: 8px;
+}
+#searchBarPopup{
+    z-index: 1000000;
+}
+/* ******************************************** */
+.filterSearchBarPopUp{
+    display: none;
+}
+.defaultSearchBarPopUp{
+    display: none;
+}
+.show{
+    display: flex;
+}

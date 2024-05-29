@@ -1,0 +1,116 @@
+a, a:visited {
+    color: #222;
+    text-decoration: none;
+}
+.footerContainer{
+    width: 100%;
+    border-top: 1px solid #ddd;
+    color: #222;
+    font-size: 14px;
+    line-height: 18px;
+    padding-top: 40px;
+}
+.topFooter{
+    background-color: #fff;
+    height: 430px;
+}
+.footerContent{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 40px;
+    gap: 40px;
+    padding-top: 40px;
+}
+.footerContent a{
+    margin-bottom: 20px;
+    display: block;
+    font-weight: 500;
+}
+.footerContent h3 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    margin-bottom: 0px;
+  }
+.footerContent>div{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    font-size: 14px;
+    line-height: 18px;
+    color: #222;
+    width: 200px;
+    height: 300px;
+}
+
+.footerBottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 40px;
+}
+.footerSocial{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-self: left;
+    justify-content: center;
+    vertical-align: middle;
+    height: 40px;
+    gap: 24px;
+}
+.footerSocial img{
+    height: 28px;
+    vertical-align: middle;
+}
+.getApp{
+    display: flex;
+    flex-direction: row;
+    justify-self: right;
+    justify-items: center;
+    align-items: center;
+    vertical-align: middle;
+    height: 40px;
+    gap: 20px;
+    padding-bottom: 60px;
+}
+.getApp a{
+    font-weight: 700 !important;
+    text-decoration: underline !important;
+}
+.getApp img{
+    height: 40px;
+}
+.footerInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 80px;
+}
+.footerInfo a{color: #666;}
+.group-links a{
+    padding-left: 6px;
+    color: #666;
+}
+.group-links a::before{
+    content: "|";
+    padding-right: 6px;
+}
+.group-links a:first-child::before{
+    content: "";
+}
+.infosContent{
+    color: #666 !important;
+}
+.infosContent a{
+    padding-right: 6px;
+}
+.infosContent a::before{
+    content: "·";
+    padding-right: 6px;
+}
+.infosContent a:first-child:before{content: "";}

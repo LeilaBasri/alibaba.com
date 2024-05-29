@@ -1,0 +1,165 @@
+
+.allCategoriesContainer{
+    min-width: 1300px;
+    width: 100%;
+    margin: 30px auto;
+    padding: 20px 0;
+    height: 450px;
+    position: absolute;
+    top: 0;
+    left: -20px;
+    display: none;
+    flex-direction: row;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    color: #222;
+    overflow: hidden;
+    z-index: 100000;
+    opacity: 1;
+}
+.mainCategories{
+    width: 30%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #ddd;
+}
+.mainCategories div{
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+}
+.mainCategories div:hover{
+    background-color: #f2f2f2;
+}
+
+.secondaryCategories {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border-right: 1px solid #ddd;
+}
+.secondaryCategories .topCategories, .secondaryCategories .homeDecors
+, .secondaryCategories .industrials, .secondaryCategories .healthPersonalCares
+, .secondaryCategories .fashionBeauties, .secondaryCategories .sportsEntertainments
+, .secondaryCategories .toolsHomeImprovements{
+    width: 100%;
+    display: flex;
+    justify-self: left;
+    flex-direction: column;
+}
+.secondaryCategories .topCategories div, .secondaryCategories .homeDecors div
+, .secondaryCategories .industrials div, .secondaryCategories .healthPersonalCares div
+, .secondaryCategories .fashionBeauties div, .secondaryCategories .sportsEntertainments div
+, .secondaryCategories .toolsHomeImprovements div{
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+}
+.secondaryCategories .topCategories div img, .secondaryCategories .homeDecors div img
+, .secondaryCategories .industrials div img, .secondaryCategories .healthPersonalCares div img
+, .secondaryCategories .fashionBeauties div img, .secondaryCategories .sportsEntertainments div img
+, .secondaryCategories .toolsHomeImprovements div img{
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+.secondaryCategories.topCategories div:hover, .secondaryCategories .homeDecors div:hover
+, .secondaryCategories .industrials div:hover, .secondaryCategories .healthPersonalCares div:hover
+, .secondaryCategories .fashionBeauties div:hover, .secondaryCategories .sportsEntertainments div:hover
+, .secondaryCategories .toolsHomeImprovements div:hover{
+    background-color: #f2f2f2;
+}
+
+.topCategories, .homeDecors, .industrials, .healthPersonalCares, .fashionBeauties,
+ .sportsEntertainments, .toolsHomeImprovements{opacity: 1;}
+ .show{display: flex !important;}
+ .hide{display: none !important;}
+ .activeCate{background-color: #f2f2f2;}
+ .inactiveCate{background-color: #fff;}
+
+.finalCategories{
+    width: 40%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #ddd;
+    padding: 20px;
+}
+.finalCategories .finalCategoriesTitle{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-left: 14px;
+    margin-bottom: 28px;
+    font-weight: 600;
+}
+.finalCategoriesItem{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: first baseline;
+    justify-items: center;
+    align-items: flex-start;
+    vertical-align: top;
+    gap: 20px;
+}
+.finalCategoriesItem a{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    text-align: center;
+    padding: 0 10px;
+    width: 110px;
+    gap: 20px;
+
+}
+.finalCategoriesImg{
+    display: flex;
+    justify-self: center;
+    width: 60px;
+    height: 60px;
+    position: relative;
+    object-fit: cover;
+}
+.finalCategoriesItem img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    border-radius: 60px;
+    z-index: -1;
+
+}
+.finalCategoriesImg::after {
+    content: '';
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    z-index: 100;
+  }

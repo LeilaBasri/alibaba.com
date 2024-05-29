@@ -1,0 +1,212 @@
+.homeHeaderContainer{
+    width: 100%;
+    position: relative;   
+}
+.homeHeader{
+    width: 100%;
+    height: 400px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #222;
+    background-image: url(../../assets/images/AlibabaImages/header-bg.webp);
+    background-size: cover;
+    transition: all 2s ease;
+    z-index: -1;
+}
+.darkCover{
+    width: 100%;
+    height: 800px;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    background-color: rgba(0,0,0,.7);
+    z-index: 100;
+    display: none;
+}
+.headerAllCategoriesContainer:hover .darkCover{display: block !important;}
+
+.headerAndSearchContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    background-color: rgba(0,0,0,.2);
+}
+.topHeaderContainer{
+    width: 100%;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+}
+.homeSearchHeaderContainer{
+    width: 100%;
+    height: 280px;
+}
+.topHeader{
+    width: 100%;
+    height: 75px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+.subHeaderContainer{
+    width: 100%;
+    height: 45px;
+}
+/* **************************topHeader********************************** */
+.logoContainer{
+    display: flex;
+    justify-self: left;
+    align-items: center;
+}
+.logoContent{
+    width: 200px;
+    height: 30px;
+    display: flex;
+    background-image: url(../../assets/images/AlibabaImages/logoW.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.stckyHeader .logoContent{
+    background-image: url(../../assets/images/AlibabaImages/logoOrange.avif);
+}
+.topSearchbarContainer{
+    display: flex;
+    justify-self: left;
+    justify-content: center;
+    justify-items: center;
+    display: none;
+}
+.stckyHeader .topSearchbarContainer{
+    display: flex;
+}
+.topNav{
+    width: 36%;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    justify-self: right;
+    flex-direction: row;
+    align-items: center;
+    gap: 25px;
+}
+.topNavShipTo{
+    display: flex;
+    flex-direction: column;
+    width: 70px;
+}
+.topNavDeliverTo{
+    font-size: 14px;
+}
+.countryFlag{
+    display: flex;
+    flex-direction: row;
+    height: 14px;
+    align-items: center;
+    vertical-align: middle;
+    font-weight: 600;
+    cursor: pointer;
+}
+.countryFlag img{
+    height: 14px;
+    margin-right: 4px;
+}
+.topNavLanguage{
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    vertical-align: middle;
+    line-height: 45px;
+    cursor: pointer;
+    width: 125px;
+}
+.topNavLanguage img{
+    margin-right: 6px;
+    margin-top: -5px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.currentLanguage{display: inline-block !important;}
+.stckyHeader .currentLanguage{display: none !important;}
+.currentLanguageSH{display: none !important;}
+.stckyHeader .currentLanguageSH{display: inline-block !important;}
+.topNavLogIn{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: space-between;
+    justify-items: center;
+}
+.signIn{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    justify-self: center;
+    vertical-align: middle;
+    line-height: 36px;
+    cursor: pointer;
+}
+.signIn:hover{
+    text-decoration: underline;
+}
+.signIn:focus-visible{
+    outline: auto;
+}
+.signIn img{
+    width: 25px;
+    height: 25px;
+    margin-right: 6px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.customer{display: inline-block;}
+.stckyHeader .customer{display: none;}
+.customerSH{display: none !important;}
+.stckyHeader .customerSH{display: inline-block !important;}
+.signUp{ 
+    width: 50%;
+    display: flex;
+}
+.signUpLink{
+    background-color: #f60;
+    font-size: 14px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 600;
+    height: 36px;
+    min-width: 120px;
+    flex-grow: 1;
+    flex-shrink: 0;
+    border-radius: 50px;
+    border: none;
+    text-align: center;
+    line-height: 36px;
+    padding: 0 24px;
+    text-decoration: none;
+}
+.signUpLink:hover{
+    background-color: #d04a0a;
+}
+.signUpLink:active{
+    text-decoration: none;
+    scale: (.9);
+}
+/* ******************************subHeader****************************** */
+.stckyHeader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    color: #222;
+    z-index: 900;
+}
+/* ********************************************************************* */

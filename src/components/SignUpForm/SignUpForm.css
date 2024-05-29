@@ -1,0 +1,11 @@
+.signUpFormContainer{
+    background-color: #fff;
+    color: #4d4d4d;
+}
+.signUpFormContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}

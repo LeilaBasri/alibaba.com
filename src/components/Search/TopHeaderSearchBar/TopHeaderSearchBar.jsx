@@ -8,26 +8,32 @@ import SearchBarSuggestions from '../../../assets/data/SearchBarSuggestions'
 import { useState } from 'react';
 
 const TopHeaderSearchBar = ()=>{
+    const [arrowDown , setArrowDown] = useState("arrowIcon show");
+    const [arrowUp , setArrowUp] = useState("arrowIcon hide")
+    const [DropdownItemsPanel , setDropdownItemsPanel] = useState("searchBarDropdownItemsPanel hide");
     function showSearchBarDropdown(){
-        document.getElementById("searchBarDropdownItemsPanel").style.display="block";
-        document.getElementById("arrowDown").style.display="none";
-        document.getElementById("arrowUp").style.display="block";
+        setDropdownItemsPanel("searchBarDropdownItemsPanel show");
+        setArrowUp("arrowIcon show")
+        setArrowDown("arrowIcon hide")
     }
     const [selectedOption,setSelected]=useState("Manufacturers");
     const [topHeaderSearchContent, setTopHeaderSearchContent]=useState('')
 
     function hideSearchBarDropdown(){
-        document.getElementById("searchBarDropdownItemsPanel").style.display="none";
-        document.getElementById("arrowUp").style.display="none";
-        document.getElementById("arrowDown").style.display="block";
+        setDropdownItemsPanel("searchBarDropdownItemsPanel hide");
+        setArrowUp("arrowIcon hide");
+        setArrowDown("arrowIcon block")
     }
 
+    const [filterTopHeaderSearchBarPopUp , setFilterTopHeaderSearchBarPopUp] = useState("filterTopHeaderSearchBarPopUp");
+    const [defaultTopHeaderSearchBarPopUp , setDefaultTopHeaderSearchBarPopUp] = useState("defaultTopHeaderSearchBarPopUp");
+
     function showDefaultTopHeaderSearchBarPopUp(){
-        document.getElementById("defaultTopHeaderSearchBarPopUp").classList.add("show")
+        setDefaultTopHeaderSearchBarPopUp("defaultTopHeaderSearchBarPopUp show")
     }
     function showFilterTopHeaderSearchBarPopUp(){
-        document.getElementById("defaultTopHeaderSearchBarPopUp").classList.remove("show")
-        document.getElementById("filterTopHeaderSearchBarPopUp").classList.add("show")
+        setDefaultTopHeaderSearchBarPopUp("defaultTopHeaderSearchBarPopUp")
+        setFilterTopHeaderSearchBarPopUp("filterTopHeaderSearchBarPopUp show")
     }
 
     return(
@@ -35,10 +41,16 @@ const TopHeaderSearchBar = ()=>{
             <div className='topHeaderSearchBar'>
                 <div className='topHeaderSearchBarInner'>
                     <div className='topHeaderSearchBarSwitchDropdown'>
-                    <div className='searchBarDropdownItem' onClick={showSearchBarDropdown}><div>{selectedOption}</div><span className='arrowIcon' id='arrowDown'>&#x2B9F;</span><span className='arrowIcon' id='arrowUp'>&#x2B9D;</span></div>
+
+                    <div className='searchBarDropdownItem' 
+                    onClick={showSearchBarDropdown}>
+                        <div>{selectedOption}</div>
+                        <span className={arrowDown} id='arrowDown'>&#x2B9F;</span>
+                        <span className={arrowUp} id='arrowUp'>&#x2B9D;</span>
+                    </div>
                     
                         <div className='searchBarDropdownItemsPanelContainer'> 
-                            <div className='searchBarDropdownItemsPanel' id='searchBarDropdownItemsPanel'>
+                            <div className={DropdownItemsPanel} id='searchBarDropdownItemsPanel'>
                                 <div className='dropdownPanelItem active' id='Manufacturers' onClick={()=>{setSelected("Manufacturers");hideSearchBarDropdown()}}>Manufacturers<span className='checkMark'>&#10004;</span></div>
                                 <div className='dropdownPanelItem' id='Products' onClick={()=>{setSelected("Products");hideSearchBarDropdown()}}>Products<span className='checkMark'>&#10004;</span></div>
                                 <div className='dropdownPanelItem' id='Suppliers' onClick={()=>{setSelected("Suppliers");hideSearchBarDropdown()}}>Suppliers<span className='checkMark'>&#10004;</span></div>
@@ -47,7 +59,15 @@ const TopHeaderSearchBar = ()=>{
                     </div>
                     <div className='divider'></div>
                     <div className='topHeaderSearchBarInput'>
-                        <input className='SearchBarInput' type='text' value="" maxLength="50" placeholder='wedding decoration' onClick={showDefaultTopHeaderSearchBarPopUp} onChange={showFilterTopHeaderSearchBarPopUp}/>
+
+                        <input className='SearchBarInput' 
+                        type='text' 
+                        value="" 
+                        maxLength="50" 
+                        placeholder='wedding decoration' 
+                        onClick={showDefaultTopHeaderSearchBarPopUp} 
+                        onChange={showFilterTopHeaderSearchBarPopUp}/>
+
                         <div className='SearchBarInputPlaceholder'>
                             <div><span>wedding decoration</span></div>
                             <div><span>electric scooter</span><div className='placeholderImageContainer'><img height="20px" src={inCA} alt='electric scooter'/><span>in CA</span></div></div>
@@ -65,18 +85,22 @@ const TopHeaderSearchBar = ()=>{
                         </button>
                     </div>
                     <div className='topHeaderSearchBarPopUp' id='topHeaderSearchBarPopUp'>
-                        <div className='filterTopHeaderSearchBarPopUp' id='filterTopHeaderSearchBarPopUp'>
+                        <div className={filterTopHeaderSearchBarPopUp} id='filterTopHeaderSearchBarPopUp'>
                             <div className="topHeadersearchBarPopUpContainer" id='searchBarPopUpContainer'>
                                 <div className='recommendSearchContainer'>
                                     {SearchBarSuggestions.filter((searchItem)=>{
-                                        return(searchItem.fullName.toLowerCase().startsWith(topHeaderSearchContent.toLowerCase()))}).map((searchItem)=>{
-                                            return(<div key={topHeaderSearchContent.id}  style={{padding:"10px 40px", cursor:'pointer'}} onClick={()=>setTopHeaderSearchContent(searchItem.fullName)}>{searchItem.fullName}</div>)
+                                        return(searchItem.fullName.toLowerCase().startsWith
+                                        (topHeaderSearchContent.toLowerCase()))}).map((searchItem)=>{
+                                            return(<div key={topHeaderSearchContent.id}  
+                                                style={{padding:"10px 40px", cursor:'pointer'}} 
+                                                onClick={()=>setTopHeaderSearchContent(searchItem.fullName)}>
+                                                    {searchItem.fullName}</div>)
                                         })
                                     }
                                 </div>
                             </div>
                         </div>
-                        <div className='defaultTopHeaderSearchBarPopUp' id='defaultTopHeaderSearchBarPopUp'>
+                        <div className={defaultTopHeaderSearchBarPopUp} id='defaultTopHeaderSearchBarPopUp'>
                             <SearchBarPopUp/>
                         </div>
                     </div>

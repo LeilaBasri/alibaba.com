@@ -3,22 +3,21 @@ import deleteIcon from '../../../assets/images/Icons/deleteBlack.svg'
 import deleteIconR from '../../../assets/images/Icons/deleteRed.svg'
 import searchIcon from '../../../assets/images/Icons/searchBlack.svg'
 import clock from '../../../assets/images/Icons/clockBlack.svg'
+import searchbarPopUp from '../../../assets/data/searchBarPopUp';
+import { useContext , useState } from 'react';
+import { SearchContext } from '../../../context/SearchContext';
 
 const SearchBarPopUp = () =>{
 
-    const historySearchesList =[
-        {id:100, productName:'stir fry machine automatic',cat:'productHome',url:'/stirFryMachineAutomatic'},
-        {id:111, productName:'sofa set furniture',cat:'productHome',url:'/sofaSetFurniture'},
-        {id:113, productName:'auto stirring pot',cat:'productHome',url:'/autoStirringPot'}
-    ];
-    const recommendSearchList=[
-        {id:200, productName:'electric scooter', cat:'',url:'/electricScooter'},
-        {id:201, productName:'tools', cat:'',url:'/tools'},
-        {id:202, productName:'sofa set furniture', cat:'',url:'/sofaSetFurniture'},
-        {id:203, productName:'furniture', cat:'',url:'/furniture'},
-        {id:204, productName:'wedding decoration', cat:'',url:'weddingDecoration'},
-        {id:205, productName:'milwaukee tools', cat:'',url:'milwaukeeTools'}
-    ];
+    const recommendSearchList= searchbarPopUp[1];
+    const historySearchesList = searchbarPopUp[0];
+
+    const [searchContent, setSearchContent]= useState("");
+    const searchContext = useContext(SearchContext);
+    
+    const searchContentHandler = () =>{
+        searchContext.searchHandler(searchContent);
+    }
 
     return(
         <div className="searchBarPopUpContainer" id='searchBarPopUpContainer'>
@@ -32,14 +31,35 @@ const SearchBarPopUp = () =>{
                         </div>
                     </div>
                     <div className='historySearchesList'>
-                        {historySearchesList.map((item)=><div key={item.id} className='historySearchesListItem'><img src={clock} alt='clock'/>{item.productName}</div>)}
-                        <div className='showMoreHistorySearch'><span>Show more</span><i class="arrowdown"></i></div>
+                        {historySearchesList.map((item)=>
+                        <div key={item.id} className='historySearchesListItem'
+                            onClick={()=>{setSearchContent(item.productName);searchContentHandler()}}
+                            onChange={searchContentHandler}>
+                            <img src={clock} alt='clock'/>
+                            {item.productName}
+                        </div>)}
+                        <div className='showMoreHistorySearch'><span>Show more</span><i className="arrowdown"></i></div>
                     </div>
                 </div>
                 <div className='recommendSearchSection'>
-                    <div className='recommendSearchTitle'><h3>Recommended for you</h3><div className='refreshBtnContainer'><span className='refreshBtn'>Refresh</span><span className='refreshIcon'>&#10226;</span></div></div>
-                    <div className='recommendSearchList'>{recommendSearchList.map((item)=><div key={item.id} className='recommendSearchListItem'><img src={searchIcon} alt='search'/>{item.productName}</div>)}</div>
+                    <div className='recommendSearchTitle'>
+                        <h3>Recommended for you</h3>
+                        <div className='refreshBtnContainer'>
+                            <span className='refreshBtn'>Refresh</span>
+                            <span className='refreshIcon'>&#10226;</span>
+                        </div>
                     </div>
+                    <div className='recommendSearchList'>
+                        {recommendSearchList.map((item)=>
+                        <div key={item.id} 
+                        className='recommendSearchListItem'
+                        onChange={()=>setSearchContent(item.productName)}
+                        onClick={searchContentHandler}>
+                            <img src={searchIcon} alt='search'/>
+                            {item.productName}
+                        </div>)}
+                    </div>
+                </div>
             </div>
         </div>
     )

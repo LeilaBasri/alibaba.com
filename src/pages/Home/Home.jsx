@@ -37,7 +37,7 @@ const Home = () => {
                     <div className='getSamples'>
                         <h3>Get samples</h3>
                         <div className='getSampleProductsContainer'>
-                            <div className='getSampleProduct'>{getSampleProduct.map((item)=><div className='products'><div className='maskImgContainer'><img src={item.icon} alt={item.productName}/><div className='mask'></div></div> <span className='productName'>{item.productName}</span></div>)}</div>
+                            <div className='getSampleProduct'>{getSampleProduct.map((item)=><div className='products' key={item.id}><div className='maskImgContainer'><img src={item.icon} alt={item.productName}/><div className='mask'></div></div> <span className='productName'>{item.productName}</span></div>)}</div>
                         </div>
                     </div>
                     <div className='liveReception'>
@@ -76,7 +76,7 @@ const Home = () => {
                             <div className='joinWelcome'><span>Join for free</span></div>
                         </div>
                     </div>
-                    <div class="userOperateContainer">
+                    <div className="userOperateContainer">
                         <h4>One request, multiple quotes</h4>
                         <div className='moreInfo'>
                             <div>

@@ -5,6 +5,7 @@
     flex-shrink: 1;
     margin: 0 40px;
     width: 100%;
+    z-index: 10000000000;
 }
 .topHeaderSearchBar{
     display: flex;

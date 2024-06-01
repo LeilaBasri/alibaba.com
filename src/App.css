@@ -4,3 +4,5 @@ Header{
 Home{
     z-index: -1;
 }
+.displayFlex{display: flex;}
+.displayNone{display: none;}

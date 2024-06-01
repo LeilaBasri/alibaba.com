@@ -8,17 +8,21 @@ import customerSH from '../../assets/images/Icons/userBlack.svg'
 import HeaderSearchBar from '../Search/HeaderSearchBar/HeaderSearchBar';
 import TopHeaderSearchBar from '../Search/TopHeaderSearchBar/TopHeaderSearchBar'
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const Header = () =>{
+    const [topHeader , setTopHeader] = useState("topHeader");
+    const [topSearchbarDisplay , setTopSearchbarDisplay] = useState("topSearchbarContainer displayNone")
     window.onscroll=function() {stckyHeader()};
+    
     function stckyHeader(){
         if (window.scrollY >= 20) {
-            document.getElementById("topHeader").classList.add("stckyHeader");
-            document.getElementById("topSearchbarContainer").style.display="flex";
+            setTopHeader("topHeader stckyHeader")
+            setTopSearchbarDisplay("topSearchbarContainer displayFlex")
         }
         else{
-            document.getElementById("topHeader").classList.remove("stckyHeader");
-            document.getElementById("topSearchbarContainer").style.display="none";
+            setTopHeader("topHeader")
+            setTopSearchbarDisplay("topSearchbarContainer displayNone");
         }      
     }
     return(
@@ -27,12 +31,12 @@ const Header = () =>{
             <div className='darkCover' id='darkCover'></div>
             <div className='headerAndSearchContainer'>
                 <div className='topHeaderContainer' id='topHeaderContainer'>
-                    <div className='topHeader' id='topHeader'>
+                    <div className={topHeader} id='topHeader'>
 
 
                         <Link className='logoContainer' to='/Home'><div className='logoContent'></div></Link>
 
-                        <div className='topSearchbarContainer' id='topSearchbarContainer'><TopHeaderSearchBar/></div>
+                        <div className={topSearchbarDisplay} id='topSearchbarContainer'><TopHeaderSearchBar/></div>
 
                         <div className='topNav'>
                             <div className='topNavShipTo'>

@@ -107,6 +107,7 @@
     min-height: 340px;
     display: flex;
     flex-direction: column;
+    z-index: 10000;
 }
 .recommendSearchTitle{
     display: flex;

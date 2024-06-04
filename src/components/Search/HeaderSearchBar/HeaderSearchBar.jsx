@@ -1,7 +1,7 @@
 import './HeaderSearchBar.css'
 import InputSearchBar from '../InputSearchBar/InputSearchBar'
 
-const HeaderSearchBar = () => {
+const HeaderSearchBar = ({isSearchBarPopup , searchContent , setSearchContent}) => {
     
     const frequentlySearchedItems=[
         {id:400,searcheditem:'tools'},
@@ -20,7 +20,7 @@ const HeaderSearchBar = () => {
                 <div>
                     <div className='searchBarContainer'>
                         <div className='inputSearchBarContainer'>
-                            <InputSearchBar/>
+                            <InputSearchBar isSearchBarPopup={isSearchBarPopup} searchContent={searchContent}  setSearchContent={setSearchContent}/>
                         </div>
                         <div className='frequentlySearchedContainer'>
                             <span className='frequentlySearchName'>Frequently searched:</span>

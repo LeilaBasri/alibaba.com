@@ -7,22 +7,30 @@ import SearchBarPopUp from '../../Search/SearchBar/SearchBarPopUp'
 import SearchBarSuggestions from '../../../assets/data/SearchBarSuggestions'
 import { useState } from 'react';
 
-const TopHeaderSearchBar = ()=>{
+const TopHeaderSearchBar = ({setIsSearchBarPopup , searchContent, setSearchContent})=>{
     const [arrowDown , setArrowDown] = useState("arrowIcon show");
     const [arrowUp , setArrowUp] = useState("arrowIcon hide")
     const [DropdownItemsPanel , setDropdownItemsPanel] = useState("searchBarDropdownItemsPanel hide");
     function showSearchBarDropdown(){
         setDropdownItemsPanel("searchBarDropdownItemsPanel show");
+        setIsSearchBarPopup("false")
         setArrowUp("arrowIcon show")
         setArrowDown("arrowIcon hide")
     }
     const [selectedOption,setSelected]=useState("Manufacturers");
     const [topHeaderSearchContent, setTopHeaderSearchContent]=useState('')
 
+    const [filterSearchBarPopUp , setFilterSearchBarPopUp] = useState("filterSearchBarPopUp");
+    const [defaultSearchBarPopUp , setDefaultSearchBarPopUp] = useState("defaultSearchBarPopUp");
+
     function hideSearchBarDropdown(){
         setDropdownItemsPanel("searchBarDropdownItemsPanel hide");
         setArrowUp("arrowIcon hide");
         setArrowDown("arrowIcon block")
+    }
+    function showFilterSearchBarPopUp(){
+        setDefaultSearchBarPopUp("defaultSearchBarPopUp")
+        setFilterSearchBarPopUp("filterSearchBarPopUp show")
     }
 
     const [filterTopHeaderSearchBarPopUp , setFilterTopHeaderSearchBarPopUp] = useState("filterTopHeaderSearchBarPopUp");
@@ -62,11 +70,12 @@ const TopHeaderSearchBar = ()=>{
 
                         <input className='SearchBarInput' 
                         type='text' 
-                        value="" 
+                        value={searchContent} 
                         maxLength="50" 
-                        placeholder='wedding decoration' 
-                        onClick={showDefaultTopHeaderSearchBarPopUp} 
-                        onChange={showFilterTopHeaderSearchBarPopUp}/>
+                        placeholder='wedding decoration'
+                        onChange={(e)=>setSearchContent(e.target.value)} 
+                        onClick={showDefaultTopHeaderSearchBarPopUp}
+                        onKeyDown={showFilterTopHeaderSearchBarPopUp}/>
 
                         <div className='SearchBarInputPlaceholder'>
                             <div><span>wedding decoration</span></div>
@@ -90,10 +99,10 @@ const TopHeaderSearchBar = ()=>{
                                 <div className='recommendSearchContainer'>
                                     {SearchBarSuggestions.filter((searchItem)=>{
                                         return(searchItem.fullName.toLowerCase().startsWith
-                                        (topHeaderSearchContent.toLowerCase()))}).map((searchItem)=>{
+                                        (searchContent.toLowerCase()))}).map((searchItem)=>{
                                             return(<div key={topHeaderSearchContent.id}  
                                                 style={{padding:"10px 40px", cursor:'pointer'}} 
-                                                onClick={()=>setTopHeaderSearchContent(searchItem.fullName)}>
+                                                onClick={()=>{setSearchContent(searchItem.fullName);showFilterTopHeaderSearchBarPopUp()}}>
                                                     {searchItem.fullName}</div>)
                                         })
                                     }
@@ -101,7 +110,9 @@ const TopHeaderSearchBar = ()=>{
                             </div>
                         </div>
                         <div className={defaultTopHeaderSearchBarPopUp} id='defaultTopHeaderSearchBarPopUp'>
-                            <SearchBarPopUp/>
+                            <div className="topheaderSearchBarPopUpContainer" id='searchBarPopUpContainer'>
+                            <SearchBarPopUp setSearchContent={setSearchContent}/>
+                            </div>
                         </div>
                     </div>
                     <div className='topHeaderSearchBarPic'></div>

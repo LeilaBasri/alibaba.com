@@ -9,11 +9,10 @@ import { useRef, useState , useContext } from 'react'
 import { SearchContext } from '../../../context/SearchContext'
 import { useEffect } from 'react'
 
-function InputSearchBar() {
+function InputSearchBar({isSearchBarPopup , setSearchContent , searchContent}) {
     const placeHolderItems=[{item:'wedding decoration' ,ani:'placeHolderItem1'} , {item:'electric bike',ani:'placeHolderItem2'} , {item:'milwaukee tools',ani:'placeHolderItem3'}]
 
     const searchContext = useContext(SearchContext);
-    const [searchContent, setSearchContent]= useState("");
     
     const searchContentHandler = () =>{
         searchContext.searchHandler(searchContent);
@@ -31,16 +30,23 @@ function InputSearchBar() {
         setDefaultSearchBarPopUp("defaultSearchBarPopUp")
         setFilterSearchBarPopUp("filterSearchBarPopUp show")
     }
-    function showDefaultSearchBarPopUp(){setDefaultSearchBarPopUp("defaultSearchBarPopUp show")}
-    function defaultSearchBarPopUpDisplay(){
-        if(searchContent===""){
-            setFilterSearchBarPopUp("filterSearchBarPopUp");
+    function showDefaultSearchBarPopUp()
+    {
+        if(isSearchBarPopup==="true"){
             setDefaultSearchBarPopUp("defaultSearchBarPopUp show")
         }
-        if(!(searchContent==="")){
-            setDefaultSearchBarPopUp("defaultSearchBarPopUp")
-            setFilterSearchBarPopUp("filterSearchBarPopUp show")
-
+    }
+    function defaultSearchBarPopUpDisplay(){
+        if(isSearchBarPopup==="true"){
+            if(searchContent===""){
+                setFilterSearchBarPopUp("filterSearchBarPopUp");
+                setDefaultSearchBarPopUp("defaultSearchBarPopUp show")
+            }
+            if(!(searchContent==="")){
+                setDefaultSearchBarPopUp("defaultSearchBarPopUp")
+                setFilterSearchBarPopUp("filterSearchBarPopUp show")
+    
+            }
         }
     }
         
@@ -84,13 +90,13 @@ function InputSearchBar() {
             <span>Search</span>
         </button>
     </div>
-    <div className='searchBarPopup' id='searchBarPopup'>
+    <div className="searchBarPopup" id='searchBarPopup'>
         <div className={filterSearchBarPopUp} id='filterSearchBarPopUp'>
             <div className="searchBarPopUpContainer" id='searchBarPopUpContainer'>
                 <div className='recommendSearchContainer'>
-                    {SearchBarSuggestions.filter((searchItem)=>{
+                    {(SearchBarSuggestions.filter((searchItem)=>{
                         return(searchItem.fullName.toLowerCase().startsWith
-                        (searchContent.toLowerCase()))}).map((searchItem)=>{
+                        (searchContent.toLowerCase()))})).map((searchItem)=>{
                             return(<div key={searchContent.id}  
                                 style={{padding:"10px 40px", cursor:'pointer'}} 
                                 onClick={()=>setSearchContent(searchItem.fullName)}>
@@ -102,7 +108,9 @@ function InputSearchBar() {
             </div>
         </div>
         <div className={defaultSearchBarPopUp} id='defaultSearchBarPopUp'>
-            <SearchBarPopUp />
+            <div className="searchBarPopUpContainer" id='searchBarPopUpContainer'>
+                <SearchBarPopUp setSearchContent={setSearchContent}/>
+            </div>
         </div>
     </div>
 </div>

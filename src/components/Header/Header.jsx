@@ -12,7 +12,9 @@ import { useState } from 'react';
 
 const Header = () =>{
     const [topHeader , setTopHeader] = useState("topHeader");
+    const [searchContent, setSearchContent]= useState("");
     const [topSearchbarDisplay , setTopSearchbarDisplay] = useState("topSearchbarContainer displayNone")
+    const [isSearchBarPopup , setIsSearchBarPopup] = useState("true")
     window.onscroll=function() {stckyHeader()};
     
     function stckyHeader(){
@@ -36,7 +38,9 @@ const Header = () =>{
 
                         <Link className='logoContainer' to='/Home'><div className='logoContent'></div></Link>
 
-                        <div className={topSearchbarDisplay} id='topSearchbarContainer'><TopHeaderSearchBar/></div>
+                        <div className={topSearchbarDisplay} id='topSearchbarContainer'>
+                            <TopHeaderSearchBar setIsSearchBarPopup={setIsSearchBarPopup} searchContent={searchContent} setSearchContent={setSearchContent}/>
+                        </div>
 
                         <div className='topNav'>
                             <div className='topNavShipTo'>
@@ -69,7 +73,7 @@ const Header = () =>{
                     </div>
                 </div>
                 <div className='homeSearchHeaderContainer'>
-                    <HeaderSearchBar/>
+                    <HeaderSearchBar isSearchBarPopup={isSearchBarPopup} searchContent={searchContent} setSearchContent={setSearchContent}/>
                 </div>
             </div>
         </div>

@@ -5,23 +5,10 @@ import cameraO from '../../../assets/images/Icons/cameraorange.svg'
 import search from '../../../assets/images/Icons/searchW.svg'
 import SearchBarPopUp from '../SearchBar/SearchBarPopUp'
 import SearchBarSuggestions from '../../../assets/data/SearchBarSuggestions'
-import { useRef, useState , useContext } from 'react'
-import { SearchContext } from '../../../context/SearchContext'
-import { useEffect } from 'react'
+import { useState } from 'react'
 
 function InputSearchBar({isSearchBarPopup , setSearchContent , searchContent}) {
     const placeHolderItems=[{item:'wedding decoration' ,ani:'placeHolderItem1'} , {item:'electric bike',ani:'placeHolderItem2'} , {item:'milwaukee tools',ani:'placeHolderItem3'}]
-
-    const searchContext = useContext(SearchContext);
-    
-    const searchContentHandler = () =>{
-        searchContext.searchHandler(searchContent);
-    }
-
-    const inputRef = useRef(null)
-    useEffect(()=>{
-        inputRef.current=searchContentHandler()
-    },[])
 
     const [filterSearchBarPopUp , setFilterSearchBarPopUp] = useState("filterSearchBarPopUp");
     const [defaultSearchBarPopUp , setDefaultSearchBarPopUp] = useState("defaultSearchBarPopUp");
@@ -36,37 +23,23 @@ function InputSearchBar({isSearchBarPopup , setSearchContent , searchContent}) {
             setDefaultSearchBarPopUp("defaultSearchBarPopUp show")
         }
     }
-    function defaultSearchBarPopUpDisplay(){
-        if(isSearchBarPopup==="true"){
-            if(searchContent===""){
-                setFilterSearchBarPopUp("filterSearchBarPopUp");
-                setDefaultSearchBarPopUp("defaultSearchBarPopUp show")
-            }
-            if(!(searchContent==="")){
-                setDefaultSearchBarPopUp("defaultSearchBarPopUp")
-                setFilterSearchBarPopUp("filterSearchBarPopUp show")
-    
-            }
-        }
-    }
         
 
   return (
 <div className='inputSearchBarContainer'>
     <div className='inputSearchBar' 
-        onMouseOver={showDefaultSearchBarPopUp}>
+        onClick={showDefaultSearchBarPopUp}>
 
         <form method='action' type="submit">
             <input 
                 className='searchInput'
                 name='searchInput' 
-                type='text' 
-                ref={inputRef} 
+                type='text'  
                 placeholder="wedding decoration" 
                 value={searchContent} 
                 onChange={(e)=>setSearchContent(e.target.value)}
                 onClick={showFilterSearchBarPopUp}
-                onKeyDown={searchContentHandler}
+                onKeyDown={showFilterSearchBarPopUp}
             />
             <div className='searchBarPlaceHolder'>
                 <div className='placeHolderItems'>
@@ -85,7 +58,7 @@ function InputSearchBar({isSearchBarPopup , setSearchContent , searchContent}) {
     </div>
     <div className='searchBarbuttonContainer'>
         <button className='searchBarbutton' 
-        onClick={()=>setSearchContent(searchContent)}>
+        onClick={showFilterSearchBarPopUp}>
             <img src={search} alt='Search'/>
             <span>Search</span>
         </button>
@@ -118,3 +91,18 @@ function InputSearchBar({isSearchBarPopup , setSearchContent , searchContent}) {
 }
 
 export default InputSearchBar
+/*
+import { SearchContext } from '../../../context/SearchContext'
+ref={inputRef}
+    const inputRef = useRef(null)
+    useEffect(()=>{
+        inputRef.current=searchContentHandler()
+    },[])
+
+        const searchContext = useContext(SearchContext);
+    
+    const searchContentHandler = () =>{
+        searchContext.searchHandler(searchContent);
+    }
+    
+    */

@@ -15,8 +15,8 @@ const StreamlineOrdering = ()=>{
                     {streamlineOrderingItemsList.map((Item)=>                
                     <div key={Item.id} className={selectedtem===Item.class?"streamlineOrderingItem activeItem":"streamlineOrderingItem"} onMouseOver={()=>{setLinkToImg(Item.img); setSelectedItem(Item.class)}}>
                         <div className='streamlineOrderingItemIconContainer'>
-                            <div className={Item===streamlineOrderingItemsList[streamlineOrderingItemsList.length-1]?"streamlineOrderingItemIcon lastChild":"streamlineOrderingItemIcon itemIconChild"}><img src={Item.icon} /></div>
-                            <div className={Item===streamlineOrderingItemsList[streamlineOrderingItemsList.length-1]?"streamlineOrderingItemIconBlack lastChild":"streamlineOrderingItemIconBlack itemIconChild"}><img src={Item.blackIcon} /></div>
+                            <div className={Item===streamlineOrderingItemsList[streamlineOrderingItemsList.length-1]?"streamlineOrderingItemIcon lastChild":"streamlineOrderingItemIcon itemIconChild"}><img src={Item.icon} alt={Item.title}/></div>
+                            <div className={Item===streamlineOrderingItemsList[streamlineOrderingItemsList.length-1]?"streamlineOrderingItemIconBlack lastChild":"streamlineOrderingItemIconBlack itemIconChild"}><img src={Item.blackIcon} alt={Item.title} /></div>
                         </div>
                         <div className='streamlineOrderingItemTextContainer'>
                             <div className='streamlineOrderingItemTitle'>{Item.title}</div>

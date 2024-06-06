@@ -3,7 +3,7 @@ import './ImageBoxLinkToItem.css'
 const ImageBoxLinkToItem = ({linkToImg}) =>{
     return(
         <div className='ImageContainer'>
-            <img src={linkToImg}/>
+            <img src={linkToImg} alt='streamlineOrdering'/>
         </div>
     )
 }

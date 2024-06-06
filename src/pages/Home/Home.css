@@ -422,7 +422,11 @@
 }
 
 /* ********************************************* */
-.recomendFactory{}
+.streamlineOrderingContainer{
+    width: 100%;
+    height: 850px;
+    display: flex;
+    margin-top: 40px;
+}
 
 /* ********************************************* */
-.toolbar{}

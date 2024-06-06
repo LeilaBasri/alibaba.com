@@ -1,0 +1,180 @@
+.streamlineOrderingContent{
+    width: 100%;
+    height: 900px;
+    background-color: #fff;
+    color: #222;
+    overflow: hidden;
+    margin: auto;
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+}
+.streamlineOrderingTitle{
+    color: #222;
+    font-size: 44px;
+    font-weight: 600;
+    line-height: 52px;
+    margin: 120px 0 0;
+    width: 800px;
+}
+.streamlineOrderingItemsList{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 120px;
+    margin-top: 100px;
+    padding-inline-start: 40px;
+}
+.streamlineOrderingItemContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-self: left;
+    align-items: center;
+    cursor: pointer;
+    width: 50%;
+    height: 100%;
+}
+.streamlineOrderingItem{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 60px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.streamlineOrderingItem:not(:last-of-type) {
+    margin-bottom: 16px;
+  }
+  .streamlineOrderingItem:not(:first-child) {
+    margin-top: 32px;
+  }
+.streamlineOrderingItem:hover{
+    height: 90px;
+}
+.streamlineOrderingItemIconContainer{
+    display: flex;
+    justify-content: center;
+    justify-self: left;
+    position: relative;
+}
+.streamlineOrderingItemIconContainer img{
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-self: center;
+}
+.streamlineOrderingItemIconBlack{
+    display: flex;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border: 2px solid #d8d8d8;
+    margin-inline-end: 28px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 8px #fff;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+.streamlineOrderingItemIcon{
+    display: none;
+    width: 60px;
+    height: 60px;
+    margin-inline-end: 28px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 8px #fff;
+    background-color: #ffefe5;
+    justify-content: center;
+    align-items: center;
+    border-width: 0;
+    -webkit-box-shadow: 0 0 0 6px #fff;
+    box-shadow: 0 0 0 6px #fff;
+    -webkit-transform: scale(1.333);
+    -ms-transform: scale(1.333);
+    transform: scale(1.333);
+}
+.itemIconChild::after{
+    content: "";
+    position: absolute;
+    top: 65px;
+    left: 28px;
+    width: 0px;
+    height: 30px;
+    background-color: #d8d8d8;
+    border: 1px solid #d8d8d8;
+}
+.itemIconChild::after{
+    content: "";
+    position: absolute;
+    top: 65px;
+    left: 29px;
+    width: 0px;
+    height: 60px;
+    background-color: #d8d8d8;
+    border: 1px solid #d8d8d8;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+.streamlineOrderingItem:hover .streamlineOrderingItemIconBlack{display: none;}
+.streamlineOrderingItem:hover .streamlineOrderingItemIcon {
+    display: flex;
+}
+.streamlineOrderingItemTitle{
+    font-size: 28px;
+    line-height: 34px;
+    margin-top: 13px;
+}
+.streamlineOrderingItem:hover .streamlineOrderingItemTitle{
+    color: #51200b;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 44px;
+    margin-top: -11px;
+}
+.streamlineOrderingItemDesc{
+    display: none;
+    color: #767676;
+    display: none;
+    font-size: 16px;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    line-height: 22px;
+    margin-top: 12px;
+}
+.activeItem .streamlineOrderingItemIcon{
+    display: flex;
+}
+.activeItem .streamlineOrderingItemDesc{
+    display: flex;
+}
+.activeItem .streamlineOrderingItemIconBlack{
+    display: none;
+}
+.activeItem .streamlineOrderingItemTitle{
+    color: #51200b;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 44px;
+    margin-top: -11px;
+}
+.streamlineOrderingItem.activeItem {
+    height: 90px;
+}
+
+
+
+.ImageBoxLinkToItemContainer{
+    display: flex;
+    justify-self: right;
+    justify-content: center;
+    justify-items: center;
+    width: 50%;
+    height: 100%;
+}

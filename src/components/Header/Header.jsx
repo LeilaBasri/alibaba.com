@@ -14,7 +14,10 @@ const Header = () =>{
     const [topHeader , setTopHeader] = useState("topHeader");
     const [searchContent, setSearchContent]= useState("");
     const [topSearchbarDisplay , setTopSearchbarDisplay] = useState("topSearchbarContainer displayNone")
-    const [isSearchBarPopup , setIsSearchBarPopup] = useState("true")
+    const [isSearchBarPopup , setIsSearchBarPopup] = useState("true");
+    const [topHeaderContainer , setTopHeaderContainer] = useState("topHeaderContainer");
+    const [darkCover , setDarkCover] = useState("darkCover hide");
+
     window.onscroll=function() {stckyHeader()};
     
     function stckyHeader(){
@@ -30,11 +33,10 @@ const Header = () =>{
     return(
         <div className="homeHeaderContainer">
             <div className='homeHeader'></div>
-            <div className='darkCover' id='darkCover'></div>
+            <div className={darkCover} id='darkCover'></div>
             <div className='headerAndSearchContainer'>
-                <div className='topHeaderContainer' id='topHeaderContainer'>
+                <div className={topHeaderContainer} id='topHeaderContainer'>
                     <div className={topHeader} id='topHeader'>
-
 
                         <Link className='logoContainer' to='/Home'><div className='logoContent'></div></Link>
 
@@ -69,7 +71,7 @@ const Header = () =>{
                         </div>
                     </div>
                     <div className='subHeaderContainer'>
-                        <SubHeader></SubHeader>
+                        <SubHeader setTopHeaderContainer={setTopHeaderContainer} setTopSearchbarDisplay={setTopSearchbarDisplay} setDarkCover={setDarkCover} />
                     </div>
                 </div>
                 <div className='homeSearchHeaderContainer'>

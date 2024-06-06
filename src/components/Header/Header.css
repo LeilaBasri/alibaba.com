@@ -30,7 +30,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    z-index: 1;
+    z-index: -1;
     background-color: rgba(0,0,0,.2);
 }
 .topHeaderContainer{
@@ -39,11 +39,12 @@
     display: flex;
     flex-direction: column;
     color: #fff;
-    z-index: 1000000;
+    z-index: 100000000;
 }
 .homeSearchHeaderContainer{
     width: 100%;
     height: 280px;
+    z-index: 100;
 }
 .topHeader{
     width: 100%;
@@ -53,10 +54,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 40px;
+    z-index: -1;
 }
 .subHeaderContainer{
     width: 100%;
     height: 45px;
+    z-index: 1;
 }
 /* **************************topHeader********************************** */
 .logoContainer{

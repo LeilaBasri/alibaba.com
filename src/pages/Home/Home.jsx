@@ -1,4 +1,5 @@
 import './Home.css'
+import StreamlineOrdering from '../../components/StreamlineOrdering/StreamlineOrdering'
 
 import business from '../../assets/images/AlibabaImages/Icons/Business.webp'
 import Logistics from '../../assets/images/AlibabaImages/Icons/Logistics.webp'
@@ -96,7 +97,7 @@ const Home = () => {
                     </div>
                 </div>
             </div> 
-            <div className="recomendFactory"></div>
+            <div className="streamlineOrderingContainer"><StreamlineOrdering /></div>
             <div className="toolbar"></div>     
         </div>
     )

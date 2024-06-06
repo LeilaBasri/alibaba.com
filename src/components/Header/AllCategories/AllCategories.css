@@ -6,7 +6,7 @@
     padding: 20px 0;
     height: 450px;
     position: absolute;
-    top: 0;
+    top: 15px;
     left: -20px;
     display: none;
     flex-direction: row;
@@ -24,62 +24,53 @@
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
+    justify-content: left;
+    justify-items: left;
     border-right: 1px solid #ddd;
 }
-.mainCategories div{
-    padding: 15px 20px;
+.mainCategories .mainCate{
+    padding: 5px 20px;
     cursor: pointer;
     display: flex;
-    justify-self: center;
-    align-items: center;
 }
-.mainCategories div:hover{
+.mainCategories .mainCate:hover{
     background-color: #f2f2f2;
 }
+.mainCategories .mainCate:active{
+    background-color: #f3f3f3;
+}
 
-.secondaryCategories {
+.secondaryCategories{
     width: 30%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-self: center;
-    align-items: center;
     overflow-x: hidden;
     overflow-y: scroll;
     border-right: 1px solid #ddd;
 }
-.secondaryCategories .topCategories, .secondaryCategories .homeDecors
-, .secondaryCategories .industrials, .secondaryCategories .healthPersonalCares
-, .secondaryCategories .fashionBeauties, .secondaryCategories .sportsEntertainments
-, .secondaryCategories .toolsHomeImprovements{
+.secondaryCategories div{
     width: 100%;
     display: flex;
-    justify-self: left;
     flex-direction: column;
 }
-.secondaryCategories .topCategories div, .secondaryCategories .homeDecors div
-, .secondaryCategories .industrials div, .secondaryCategories .healthPersonalCares div
-, .secondaryCategories .fashionBeauties div, .secondaryCategories .sportsEntertainments div
-, .secondaryCategories .toolsHomeImprovements div{
-    padding: 15px 20px;
+.secondaryCategories .secondaryCate{
+    padding: 5px 20px;
     cursor: pointer;
     display: flex;
-    justify-self: center;
-    align-items: center;
+    flex-direction: row;
+    justify-content: left;
+    justify-items: left !important;
 }
-.secondaryCategories .topCategories div img, .secondaryCategories .homeDecors div img
-, .secondaryCategories .industrials div img, .secondaryCategories .healthPersonalCares div img
-, .secondaryCategories .fashionBeauties div img, .secondaryCategories .sportsEntertainments div img
-, .secondaryCategories .toolsHomeImprovements div img{
+.secondaryCategories .secondaryCate img{
     width: 24px;
     height: 24px;
     margin-right: 12px;
     flex-shrink: 0;
+    display: flex;
+    justify-self: left;
 }
-.secondaryCategories.topCategories div:hover, .secondaryCategories .homeDecors div:hover
-, .secondaryCategories .industrials div:hover, .secondaryCategories .healthPersonalCares div:hover
-, .secondaryCategories .fashionBeauties div:hover, .secondaryCategories .sportsEntertainments div:hover
-, .secondaryCategories .toolsHomeImprovements div:hover{
+.secondaryCategories .secondaryCate:hover{
     background-color: #f2f2f2;
 }
 

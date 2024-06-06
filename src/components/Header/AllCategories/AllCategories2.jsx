@@ -178,3 +178,14 @@ export default AllCategories
                 <div className='sportsEntertainments {mainCates[5].catStyle}' onClick={()=>{setActiveCate("sportsEntertainments");activeCategory()}} style={divStyle}>{sportsEntertainments.map((sportsEntertainment)=><div className={sportsEntertainment.statusCate} key={sportsEntertainment.id}><img src={sportsEntertainment.icon} alt={sportsEntertainment.cat}/>{sportsEntertainment.cat}</div>)}</div>
                 <div className='toolsHomeImprovements {mainCates[6].catStyle}' onClick={()=>{setActiveCate("toolsHomeImprovements");activeCategory()}} style={divStyle}>{toolsHomeImprovements.map((toolsHomeImprovement)=><div className={toolsHomeImprovement.statusCate} key={toolsHomeImprovement.id}><img src={toolsHomeImprovement.icon} alt={toolsHomeImprovement.cat}/>{toolsHomeImprovement.cat}</div>)}</div>
  */
+/**
+ *             <div className='secondaryCategories'>
+                <div id={mainCates[0].id} className={topCate}>{mainCates[0].subcat.map((topcategory)=><div key={topcategory.id}><img src={topcategory.icon} alt={topcategory.cat}/>{topcategory.cat}</div>)}</div>
+                <div id={mainCates[1].id} className={homeDecorCate}>{mainCates[1].subcat.map((homeDecor)=><div key={homeDecor.id}><img src={homeDecor.icon} alt={homeDecor.cat}/>{homeDecor.cat}</div>)}</div>
+                <div id={mainCates[2].id} className={industrialCate}>{mainCates[2].subcat.map((industrial)=><div key={industrial.id}><img src={industrial.icon} alt={industrial.cat}/>{industrial.cat}</div>)}</div>
+                <div id={mainCates[3].id} className={healthPersonalCareCate}>{mainCates[3].subcat.map((healthPersonalCare)=><div key={healthPersonalCare.id}><img src={healthPersonalCare.icon} alt={healthPersonalCare.cat}/>{healthPersonalCare.cat}</div>)}</div>
+                <div id={mainCates[4].id} className={fashionBeautyCate}>{mainCates[4].subcat.map((fashionBeauty)=><div key={fashionBeauty.id}><img src={fashionBeauty.icon} alt={fashionBeauty.cat}/>{fashionBeauty.cat}</div>)}</div>
+                <div id={mainCates[5].id} className={sportsEntertainmentCate}>{mainCates[5].subcat.map((sportsEntertainment)=><div key={sportsEntertainment.id}><img src={sportsEntertainment.icon} alt={sportsEntertainment.cat}/>{sportsEntertainment.cat}</div>)}</div>
+                <div id={mainCates[6].id} className={toolsHomeImprovementCate}>{mainCates[6].subcat.map((toolsHomeImprovement)=><div key={toolsHomeImprovement.id}><img src={toolsHomeImprovement.icon} alt={toolsHomeImprovement.cat}/>{toolsHomeImprovement.cat}</div>)}</div>
+            </div>
+ */

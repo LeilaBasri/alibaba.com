@@ -6,3 +6,5 @@ Home{
 }
 .displayFlex{display: flex;}
 .displayNone{display: none;}
+.show{display: flex !important;}
+.hide{display: none !important;}

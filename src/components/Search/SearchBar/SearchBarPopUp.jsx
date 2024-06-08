@@ -7,7 +7,7 @@ import searchbarPopUp from '../../../assets/data/searchBarPopUp';
 import { useState } from 'react';
 
 
-const  SearchBarPopUp = ({setSearchContent}) =>{
+const  SearchBarPopUp = ({setSearchContent , setTopSearchContent}) =>{
 
     const recommendSearchList= searchbarPopUp[1];
     const historySearchesList = searchbarPopUp[0]; 
@@ -30,7 +30,7 @@ const refreshRecomendedSearchList = () =>{
 }
 
     return(
-        
+        <div>
             <div className='recommendSearchContainer'>
                 <div className={historySearchesSection}>
                     <div className='historySearchesTitle'>
@@ -70,6 +70,7 @@ const refreshRecomendedSearchList = () =>{
                     </div>
                 </div>
             </div>
+        </div>
     )
 }
 export default SearchBarPopUp

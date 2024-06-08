@@ -1,9 +1,9 @@
 import './HeaderSearchBar.css'
+import { useState } from 'react'
 import InputSearchBar from '../InputSearchBar/InputSearchBar'
-import { useState } from 'react';
-import {useRef , useEffect } from 'react'
+import DetectOutsideClick from '../../DetectOutsideClick/DetectOutsideClick';
 
-const HeaderSearchBar = ({isSearchBarPopup , searchContent , setSearchContent}) => {
+const HeaderSearchBar = ({searchContent , setSearchContent}) => {
     
     const frequentlySearchedItems=[
         {id:400,searcheditem:'tools'},
@@ -11,17 +11,13 @@ const HeaderSearchBar = ({isSearchBarPopup , searchContent , setSearchContent}) 
         {id:402,searcheditem:'furniture'},
         {id:403,searcheditem:'milwaukee tools'}
     ];
-
-    const searchRef = useRef();
-    const [isOpenSearchBar , setIsOpenSearchBar] = useState(false);
-
-    useEffect(()=>{
-        document.addEventListener("mousedown",(event)=>
-        {
-            if(!searchRef.current.contains(event.target))
-            setIsOpenSearchBar(false);
-        })
-    });
+    const [filterSearchBarPopUp , setFilterSearchBarPopUp] = useState("filterSearchBarPopUp");
+    const [defaultSearchBarPopUp , setDefaultSearchBarPopUp] = useState("defaultSearchBarPopUp");
+    function hideTopHeaderSearchBarPopUp(){
+        setDefaultSearchBarPopUp("defaultSearchBarPopUp")
+        setFilterSearchBarPopUp("filterSearchBarPopUp") 
+        setSearchContent("") 
+    }
 
     return(
         <div className="headerSearchBarContainer">
@@ -31,15 +27,17 @@ const HeaderSearchBar = ({isSearchBarPopup , searchContent , setSearchContent}) 
                     <div className='headerSearchBarTab'><button className='tabSearchBtn'>Manufacturers</button></div>
                 </div>
                 <div>
-                    <div className='searchBarContainer' id={isOpenSearchBar}>
-                        <div ref={searchRef} className='inputSearchBarContainer' onClick={()=>setIsOpenSearchBar((isOpenSearchBar)=>!isOpenSearchBar)}>
-                            <InputSearchBar isSearchBarPopup={isSearchBarPopup} searchContent={searchContent}  setSearchContent={setSearchContent}/>
+                <DetectOutsideClick onClickOutside={hideTopHeaderSearchBarPopUp}>
+                    <div className='searchBarContainer'>
+                        <div className='inputSearchBarContainer'>
+                            <InputSearchBar  searchContent={searchContent}  setSearchContent={setSearchContent} filterSearchBarPopUp={filterSearchBarPopUp} setFilterSearchBarPopUp={setFilterSearchBarPopUp} defaultSearchBarPopUp={defaultSearchBarPopUp} setDefaultSearchBarPopUp={setDefaultSearchBarPopUp}/>
                         </div>
                         <div className='frequentlySearchedContainer'>
                             <span className='frequentlySearchName'>Frequently searched:</span>
                             {frequentlySearchedItems.map((item)=><div key={item.id} onClick={()=>setSearchContent(item.searcheditem)}>{item.searcheditem}</div>)}
                         </div>
                     </div>
+                </DetectOutsideClick>
                 </div>
             </div>
         </div>

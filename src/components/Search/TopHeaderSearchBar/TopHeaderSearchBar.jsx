@@ -6,8 +6,11 @@ import search from '../../../assets/images/Icons/searchW.svg'
 import SearchBarPopUp from '../../Search/SearchBar/SearchBarPopUp'
 import SearchBarSuggestions from '../../../assets/data/SearchBarSuggestions'
 import { useState } from 'react';
+import { useRef , useEffect } from 'react'
+import DetectOutsideClick from '../../DetectOutsideClick/DetectOutsideClick'
 
-const TopHeaderSearchBar = ({setIsSearchBarPopup , searchContent, setSearchContent})=>{
+const TopHeaderSearchBar = ({setIsSearchBarPopup})=>{
+    const [topSearchContent ,setTopSearchContent] = useState("");
     const [arrowDown , setArrowDown] = useState("arrowIcon show");
     const [arrowUp , setArrowUp] = useState("arrowIcon hide")
     const [DropdownItemsPanel , setDropdownItemsPanel] = useState("searchBarDropdownItemsPanel hide");
@@ -18,35 +21,56 @@ const TopHeaderSearchBar = ({setIsSearchBarPopup , searchContent, setSearchConte
         setArrowDown("arrowIcon hide")
     }
     const [selectedOption,setSelected]=useState("Manufacturers");
-    const [topHeaderSearchContent, setTopHeaderSearchContent]=useState('')
-
-    const [filterSearchBarPopUp , setFilterSearchBarPopUp] = useState("filterSearchBarPopUp");
-    const [defaultSearchBarPopUp , setDefaultSearchBarPopUp] = useState("defaultSearchBarPopUp");
+    //const [topHeaderSearchContent, setTopHeaderSearchContent]=useState('')
+    // const [filterSearchBarPopUp , setFilterSearchBarPopUp] = useState("filterSearchBarPopUp");
+    // const [defaultSearchBarPopUp , setDefaultSearchBarPopUp] = useState("defaultSearchBarPopUp");
 
     function hideSearchBarDropdown(){
         setDropdownItemsPanel("searchBarDropdownItemsPanel hide");
         setArrowUp("arrowIcon hide");
         setArrowDown("arrowIcon block")
     }
-    function showFilterSearchBarPopUp(){
-        setDefaultSearchBarPopUp("defaultSearchBarPopUp")
-        setFilterSearchBarPopUp("filterSearchBarPopUp show")
-    }
+    // function showFilterSearchBarPopUp(){
+    //     setDefaultSearchBarPopUp("defaultSearchBarPopUp")
+    //     setFilterSearchBarPopUp("filterSearchBarPopUp show")
+    // }
 
     const [filterTopHeaderSearchBarPopUp , setFilterTopHeaderSearchBarPopUp] = useState("filterTopHeaderSearchBarPopUp");
     const [defaultTopHeaderSearchBarPopUp , setDefaultTopHeaderSearchBarPopUp] = useState("defaultTopHeaderSearchBarPopUp");
+    const inputRef = useRef(null)
+    useEffect(()=>{
+        document.body.addEventListener("click" , (event)=>{
+            if(inputRef.current && inputRef.current.contains(event.target))
+                {
+                    setDefaultTopHeaderSearchBarPopUp("defaultTopHeaderSearchBarPopUp show")
+                }
+        })
+    })
 
-    function showDefaultTopHeaderSearchBarPopUp(){
-        setDefaultTopHeaderSearchBarPopUp("defaultTopHeaderSearchBarPopUp show")
+    function showDefaultTopHeaderSearchBarPopUp(event){
+        if(topSearchContent==="" && inputRef.current.contains(event.target)){
+            setDefaultTopHeaderSearchBarPopUp("defaultTopHeaderSearchBarPopUp show")
+        }
+        else if(!topSearchContent==="")
+        {
+            setDefaultTopHeaderSearchBarPopUp("defaultTopHeaderSearchBarPopUp")
+            setFilterTopHeaderSearchBarPopUp("filterTopHeaderSearchBarPopUp show")
+        }
     }
     function showFilterTopHeaderSearchBarPopUp(){
         setDefaultTopHeaderSearchBarPopUp("defaultTopHeaderSearchBarPopUp")
         setFilterTopHeaderSearchBarPopUp("filterTopHeaderSearchBarPopUp show")
     }
+    function hideTopHeaderSearchBarPopUp(){
+        setDefaultTopHeaderSearchBarPopUp("defaultTopHeaderSearchBarPopUp")
+        setFilterTopHeaderSearchBarPopUp("filterTopHeaderSearchBarPopUp") 
+        setTopSearchContent("") 
+    }
 
     return(
         <div className="topHeaderSearchBarContainer">
             <div className='topHeaderSearchBar'>
+            <DetectOutsideClick onClickOutside={hideTopHeaderSearchBarPopUp}>
                 <div className='topHeaderSearchBarInner'>
                     <div className='topHeaderSearchBarSwitchDropdown'>
 
@@ -67,14 +91,14 @@ const TopHeaderSearchBar = ({setIsSearchBarPopup , searchContent, setSearchConte
                     </div>
                     <div className='divider'></div>
                     <div className='topHeaderSearchBarInput'>
-
-                        <input className='SearchBarInput' 
+                        
+                        <input ref={inputRef} className='SearchBarInput' 
                         type='text' 
-                        value={searchContent} 
+                        value={topSearchContent} 
                         maxLength="50" 
                         placeholder='wedding decoration'
-                        onChange={(e)=>setSearchContent(e.target.value)} 
-                        onClick={showDefaultTopHeaderSearchBarPopUp}
+                        onChange={(e)=>setTopSearchContent(e.target.value)} 
+                        onClick={(event)=>showDefaultTopHeaderSearchBarPopUp}
                         onKeyDown={showFilterTopHeaderSearchBarPopUp}/>
 
                         <div className='SearchBarInputPlaceholder'>
@@ -93,16 +117,17 @@ const TopHeaderSearchBar = ({setIsSearchBarPopup , searchContent, setSearchConte
                             <span>Search</span>
                         </button>
                     </div>
+                    
                     <div className='topHeaderSearchBarPopUp' id='topHeaderSearchBarPopUp'>
                         <div className={filterTopHeaderSearchBarPopUp} id='filterTopHeaderSearchBarPopUp'>
                             <div className="topHeadersearchBarPopUpContainer" id='searchBarPopUpContainer'>
                                 <div className='recommendSearchContainer'>
                                     {SearchBarSuggestions.filter((searchItem)=>{
                                         return(searchItem.fullName.toLowerCase().startsWith
-                                        (searchContent.toLowerCase()))}).map((searchItem)=>{
-                                            return(<div key={topHeaderSearchContent.id}  
+                                        (topSearchContent.toLowerCase()))}).map((searchItem)=>{
+                                            return(<div key={searchItem.id}  
                                                 style={{padding:"10px 40px", cursor:'pointer'}} 
-                                                onClick={()=>{setSearchContent(searchItem.fullName);showFilterTopHeaderSearchBarPopUp()}}>
+                                                onClick={()=>{setTopSearchContent(searchItem.fullName);showFilterTopHeaderSearchBarPopUp()}}>
                                                     {searchItem.fullName}</div>)
                                         })
                                     }
@@ -111,15 +136,16 @@ const TopHeaderSearchBar = ({setIsSearchBarPopup , searchContent, setSearchConte
                         </div>
                         <div className={defaultTopHeaderSearchBarPopUp} id='defaultTopHeaderSearchBarPopUp'>
                             <div className="topheaderSearchBarPopUpContainer" id='searchBarPopUpContainer'>
-                            <SearchBarPopUp setSearchContent={setSearchContent}/>
+                            <SearchBarPopUp setTopSearchContent={setTopSearchContent}/>
                             </div>
                         </div>
                     </div>
+                    
                     <div className='topHeaderSearchBarPic'></div>
                     <div className='topHeaderSearchBarBtn'></div>
                     <div className='topHeaderSearchBarPopup'></div>
                 </div>
-                
+            </DetectOutsideClick>  
             </div>
         </div>
     )

@@ -41,7 +41,7 @@ const Header = () =>{
                         <Link className='logoContainer' to='/Home'><div className='logoContent'></div></Link>
 
                         <div className={topSearchbarDisplay} id='topSearchbarContainer'>
-                            <TopHeaderSearchBar setIsSearchBarPopup={setIsSearchBarPopup} searchContent={searchContent} setSearchContent={setSearchContent}/>
+                            <TopHeaderSearchBar setIsSearchBarPopup={setIsSearchBarPopup}/>
                         </div>
 
                         <div className='topNav'>

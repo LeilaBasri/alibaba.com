@@ -1,0 +1,75 @@
+.welcomeUserContainer{
+    width: 100%;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #ddd;
+    -moz-box-align: center;
+    -webkit-box-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    padding-left: 60px;
+    padding-right: 60px;
+    box-sizing: border-box;
+}
+.welcomeUserLayout{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: center;
+}
+.welcomeUser{
+    color: #222;
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 100;
+    display: flex;
+    width: 40%;
+    justify-self: left;
+}
+.welcomeNavigate{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: right;
+    justify-self: right;
+    width: 60%;
+}
+
+.welcomeNavigateItem{
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+    padding-left: 1vw;
+}
+.welcomeNavigateItem:last-child{border: none;}
+.welcomeNavigate img{
+    height: 27px;
+    margin-right: 15px;
+}
+.welcomeNavigateItem span{
+    text-decoration: underline;
+    padding-right: 20px;
+    font-weight: 600;
+}
+
+
+@media only screen and (max-width: 480px){ .welcomeUserContainer{display: none;}}
+@media (max-width:800px) and (min-width: 480px){
+    .welcomeUser{display: none;}
+    .welcomeUserContainer{display: none;}
+}
+@media (max-width:1100px) and (min-width: 480px){
+    .homeContainer{font-size: calc(12px + 3 * ((50vw - 320px) / 680));}
+    .welcomeUser{
+        width: 30%;
+        font-size: calc(14px + 3 * ((50vw - 320px) / 680));
+    }
+    .welcomeNavigate{width: 100%; justify-content: center;justify-items: center;}
+}
+@media (max-width:1200px) and (min-width: 1100px){
+    
+}

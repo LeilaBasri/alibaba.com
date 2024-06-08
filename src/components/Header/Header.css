@@ -77,7 +77,11 @@
     background-position: center;
 }
 .stckyHeader .logoContent{
+    display: flex;
     background-image: url(../../assets/images/AlibabaImages/logoOrange.avif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .topSearchbarContainer{
     display: flex;
@@ -87,7 +91,7 @@
     display: none;
 }
 .stckyHeader .topSearchbarContainer{
-    display: flex;
+    display: flex !important;
 }
 .topNav{
     width: 36%;
@@ -97,12 +101,12 @@
     justify-self: right;
     flex-direction: row;
     align-items: center;
-    gap: 25px;
+    gap: 2.5vw;
 }
 .topNavShipTo{
     display: flex;
     flex-direction: column;
-    width: 70px;
+    width: 7vw;
 }
 .topNavDeliverTo{
     font-size: 14px;
@@ -125,9 +129,9 @@
     flex-direction: row;
     justify-items: center;
     vertical-align: middle;
-    line-height: 45px;
+    line-height: 25px;
     cursor: pointer;
-    width: 125px;
+    width: 13vw;
 }
 .topNavLanguage img{
     margin-right: 6px;
@@ -214,3 +218,30 @@
     z-index: 900;
 }
 /* ********************************************************************* */
+@media only screen and (max-width: 480px) {
+    .logoContent{display: none;}
+    #topSearchbarContainer{display: none;}
+    .topNav{width: 70%; font-size: calc(12px + 3 * ((50vw - 320px) / 680));}
+    .topNavDeliverTo{display: none;}
+    .countryFlag{display: none;}
+    .topNavLanguage{display: none;}
+    .topNavLanguage img{display: none !important;}
+    .signIn img{width: 4vw;}
+    .signUpLink{padding: 0 .3vw; height: 7vw; min-width: 12vw;}
+}
+@media (max-width:1000px) and (min-width: 480px) {
+    .logoContent{width: 20vw;}
+    #topSearchbarContainer{display: none;}
+    .topNav{width: 65%; font-size: calc(12px + 3 * ((50vw - 320px) / 680));}
+    .topNavDeliverTo{display: none;}
+    .countryFlag{display: none;}
+    .topNavLanguage{display: none;}
+    .topNavLanguage img{display: none !important;}
+    .signIn img{width: 4vw;}
+    .signUpLink{padding: 0 .3vw; height: 36px; min-width: 12vw;}
+}
+@media (max-width:600px) and (min-width: 480px) {
+    .homeHeader{height: 300px;}
+    .topHeaderContainer{height: 20px;}
+    .topNav{margin-top: 10px;}
+}

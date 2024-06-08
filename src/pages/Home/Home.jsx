@@ -1,13 +1,10 @@
 import './Home.css'
 import StreamlineOrdering from '../../components/StreamlineOrdering/StreamlineOrdering'
-
-import business from '../../assets/images/AlibabaImages/Icons/Business.webp'
-import Logistics from '../../assets/images/AlibabaImages/Icons/Logistics.webp'
-import quotation from '../../assets/images/AlibabaImages/Icons/Quotation.webp'
 import userAvatar from '../../assets/images/AlibabaImages/Icons/avatar.png'
 import FactoryLIVE from '../../assets/images/AlibabaImages/Icons/shopCategoryIcons/FactoryLIVE.gif'
 
 import product from '../../assets/data/product'
+import WelcomeUser from '../../components/WelcomeUser/WelcomeUser'
 import ShopCategory from '../../components/Product/ShopCategory/ShopCategory'
 
 const Home = () => {
@@ -21,18 +18,10 @@ const Home = () => {
 
     return(
         <div className="homeContainer">
-            <div className="welcomeUserContainer">
-                <div className='welcomeUserLayout'>
-                    <div className="welcomeUser"><h3>Welcome to Alibaba.com</h3></div>
-                    <div className="welcomeNavigate">
-                        <div className='welcomeNavigateItem'><img src={quotation} alt='quotation'/><span>Request for Quotation</span></div>
-                        <div className='welcomeNavigateItem'><img src={business} alt='business'/><span>Alibaba.com Business+</span></div>
-                        <div className='welcomeNavigateItem'><img src={Logistics} alt='Logistics'/><span>Alibaba.com Logistics</span></div>
-                    </div>
-                </div>
-            </div>
+            <WelcomeUser/>
 
             <div className="boxes">
+                <div className='row'>
                 <ShopCategory/>
                 <div className='middleCardContainer'>
                     <div className='getSamples'>
@@ -48,6 +37,8 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
+                </div>
+                <div className='row'>
                 <div>
                 <div className='topRankingContainer'>
                     <h3>Top-ranking manufacturers</h3>
@@ -95,6 +86,7 @@ const Home = () => {
                         </div>
                         <div className='requestQuotationBtn'><span>Request for Quotation</span></div>
                     </div>
+                </div>
                 </div>
             </div> 
             <div className="streamlineOrderingContainer"><StreamlineOrdering /></div>

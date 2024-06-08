@@ -78,7 +78,7 @@ function InputSearchBar({setSearchContent , searchContent , filterSearchBarPopUp
                                 (searchContent.toLowerCase()))})).map((searchItem)=>{
                                     return(<div key={searchContent.id}  
                                         style={{padding:"10px 40px", cursor:'pointer'}} 
-                                        onClick={()=>setSearchContent(searchItem.fullName)}>
+                                        onClick={(e)=>{setSearchContent(searchItem.fullName);setSearchContent(e.target.value) ; showFilterSearchBarPopUp()}}>
                                             {searchItem.fullName}
                                             </div>)
                                 })
@@ -88,7 +88,7 @@ function InputSearchBar({setSearchContent , searchContent , filterSearchBarPopUp
                 </div>
                 <div className={defaultSearchBarPopUp} id='defaultSearchBarPopUp'>
                     <div className="searchBarPopUpContainer" id='searchBarPopUpContainer'>
-                        <SearchBarPopUp setSearchContent={setSearchContent}/>
+                        <SearchBarPopUp setSearchContent={setSearchContent} setFilterSearchBarPopUp={setFilterSearchBarPopUp} setDefaultSearchBarPopUp={setDefaultSearchBarPopUp}/>
                     </div>
                 </div>
             </div>

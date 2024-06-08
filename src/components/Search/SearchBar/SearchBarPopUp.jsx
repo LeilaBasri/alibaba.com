@@ -7,17 +7,10 @@ import searchbarPopUp from '../../../assets/data/searchBarPopUp';
 import { useState } from 'react';
 
 
-const  SearchBarPopUp = ({setSearchContent , setTopSearchContent}) =>{
+const  SearchBarPopUp = ({setSearchContent , setTopSearchContent , setFilterSearchBarPopUp , setDefaultSearchBarPopUp}) =>{
 
     const recommendSearchList= searchbarPopUp[1];
     const historySearchesList = searchbarPopUp[0]; 
-
-    /*const [searchContent, setSearchContent]= useState("");
-    const searchContext = useContext(SearchContext);
-    
-    const searchContentHandler = () =>{
-        searchContext.searchHandler(searchContent);
-    }*/
 
 const [historySearchesListToShow , setHistorySearchesListToShow]=useState(historySearchesList.slice(0,3))
 const [showMoreHistorySearch , setShowMoreHistorySearch] = useState("showMoreHistorySearch")
@@ -27,6 +20,11 @@ const [refreshRecommendSearchList , setRefreshRecommendSearchList] = useState(re
 const refreshRecomendedSearchList = () =>{
     setRefreshRecommendSearchList(searchbarPopUp[Math.floor(Math.random() *searchbarPopUp.length)])
     return refreshRecommendSearchList
+}
+
+const showFilterSearchBarPopUp = () => {
+    setDefaultSearchBarPopUp("defaultSearchBarPopUp")
+    setFilterSearchBarPopUp("filterSearchBarPopUp show")
 }
 
     return(
@@ -43,7 +41,7 @@ const refreshRecomendedSearchList = () =>{
                     <div className='historySearchesList'>
                         {historySearchesListToShow.map((item)=>
                         <div key={item.id} className='historySearchesListItem'
-                            onClick={()=>setSearchContent(item.productName)}>
+                            onClick={(e)=>{setSearchContent(item.productName); showFilterSearchBarPopUp()}}>
                             <img src={clock} alt='clock'/>
                             {item.productName}
                         </div>)}
@@ -63,7 +61,7 @@ const refreshRecomendedSearchList = () =>{
                         {refreshRecommendSearchList.map((item)=>
                         <div key={item.id} 
                         className='recommendSearchListItem'
-                        onClick= {()=>setSearchContent(item.productName)}>
+                        onClick={(e)=>{setSearchContent(item.productName); showFilterSearchBarPopUp();}}>
                             <img src={searchIcon} alt='search'/>
                             {item.productName}
                         </div>)}
@@ -74,3 +72,10 @@ const refreshRecomendedSearchList = () =>{
     )
 }
 export default SearchBarPopUp
+
+    /*const [searchContent, setSearchContent]= useState("");
+    const searchContext = useContext(SearchContext);
+    
+    const searchContentHandler = () =>{
+        searchContext.searchHandler(searchContent);
+    }*/

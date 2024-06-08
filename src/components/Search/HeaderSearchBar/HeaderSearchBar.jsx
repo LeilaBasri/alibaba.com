@@ -18,6 +18,10 @@ const HeaderSearchBar = ({searchContent , setSearchContent}) => {
         setFilterSearchBarPopUp("filterSearchBarPopUp") 
         setSearchContent("") 
     }
+    const showFilterSearchBarPopUp = () => {
+        setDefaultSearchBarPopUp("defaultSearchBarPopUp")
+        setFilterSearchBarPopUp("filterSearchBarPopUp show")
+    }
 
     return(
         <div className="headerSearchBarContainer">
@@ -34,7 +38,7 @@ const HeaderSearchBar = ({searchContent , setSearchContent}) => {
                         </div>
                         <div className='frequentlySearchedContainer'>
                             <span className='frequentlySearchName'>Frequently searched:</span>
-                            {frequentlySearchedItems.map((item)=><div key={item.id} onClick={()=>setSearchContent(item.searcheditem)}>{item.searcheditem}</div>)}
+                            {frequentlySearchedItems.map((item)=><div key={item.id} onClick={()=>{setSearchContent(item.searcheditem); showFilterSearchBarPopUp()}}>{item.searcheditem}</div>)}
                         </div>
                     </div>
                 </DetectOutsideClick>
